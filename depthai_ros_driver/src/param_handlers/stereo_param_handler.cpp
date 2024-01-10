@@ -81,7 +81,7 @@ void StereoParamHandler::declareParams(std::shared_ptr<dai::node::StereoDepth> s
 
     stereo->setLeftRightCheck(declareAndLogParam<bool>("i_lr_check", true));
     int width = 1280;
-    int height = 720;
+    int height = 800;
     auto socket = static_cast<dai::CameraBoardSocket>(declareAndLogParam<int>("i_board_socket_id", static_cast<int>(dai::CameraBoardSocket::CAM_A)));
     std::string socketName;
     if(declareAndLogParam<bool>("i_align_depth", true)) {
@@ -90,7 +90,7 @@ void StereoParamHandler::declareParams(std::shared_ptr<dai::node::StereoDepth> s
             width = getROSNode()->get_parameter(socketName + ".i_width").as_int();
             height = getROSNode()->get_parameter(socketName + ".i_height").as_int();
         } catch(rclcpp::exceptions::ParameterNotDeclaredException& e) {
-            RCLCPP_ERROR(getROSNode()->get_logger(), "%s parameters not set, defaulting to 1280x720 unless specified otherwise.", socketName.c_str());
+            RCLCPP_ERROR(getROSNode()->get_logger(), "%s parameters not set, defaulting to %dx%d unless specified otherwise. Message was %s, namespace is %s",socketName.c_str(), width, height, e.what(), getROSNode()->get_namespace());
         }
         declareAndLogParam<std::string>("i_socket_name", socketName);
         stereo->setDepthAlign(socket);

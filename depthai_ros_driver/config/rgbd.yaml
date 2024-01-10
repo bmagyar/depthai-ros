@@ -2,5 +2,13 @@
   ros__parameters:
     camera:
       i_nn_type: none
+      i_mx_id: 194430104171E31200
+      i_width: 1280
+      i_height: 800
+    rgb:
+      i_width: 1280
+      i_height: 800
     stereo:
       i_subpixel: true
+      i_width: 1280
+      i_height: 800

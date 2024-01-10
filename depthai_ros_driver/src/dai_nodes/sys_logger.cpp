@@ -73,7 +73,7 @@ void SysLogger::produceDiagnostics(diagnostic_updater::DiagnosticStatusWrapper& 
             stat.summary(diagnostic_msgs::msg::DiagnosticStatus::ERROR, "No Data");
         }
     } catch(const std::exception& e) {
-        RCLCPP_ERROR(getROSNode()->get_logger(), "No data on logger queue!");
+        RCLCPP_DEBUG(getROSNode()->get_logger(), "No data on logger queue!");
         stat.summary(diagnostic_msgs::msg::DiagnosticStatus::ERROR, e.what());
     }
 }

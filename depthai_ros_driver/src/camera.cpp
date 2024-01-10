@@ -62,7 +62,7 @@ void Camera::diagCB(const diagnostic_msgs::msg::DiagnosticArray::SharedPtr msg) 
         if(status.name == get_name() + std::string(": sys_logger")) {
             if(status.level == diagnostic_msgs::msg::DiagnosticStatus::ERROR) {
                 RCLCPP_ERROR(this->get_logger(), "Camera diagnostics error: %s", status.message.c_str());
-                restart();
+                // restart();
             }
         }
     }
